@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+用户模块mapper配置文件
+-->
+<mapper namespace="com.SlowTravel.www.mapper.UserInfoMapper">
+
+     <!--根据user_id返回前台用户信息-->
+    <select id="selectUserInfo" parameterType="int" resultType="com.SlowTravel.www.entity.UserInfo">
+        select *  from userinfo where user_id=#{user_id};
+    </select>
+
+    <!--用户信息添加到数据库-->
+    <insert id="insertUserInfo" parameterType="com.SlowTravel.www.entity.UserInfo" keyProperty="id" useGeneratedKeys="true">
+        INSERT  INTO userinfo VALUES(NULL ,#{sex},#{birthday},#{eamil},#{introduce},#{user_id})
+    </insert>
+
+    <!--根据用户Id 查找后台用户信息-->
+    <select id="selectManagerUserInfo" parameterType="int" resultType="com.SlowTravel.www.entity.manager.MyData">
+      select s.username,u.sex,u.birthday,u.eamil,u.introduce from userinfo u ,st_user s where u.user_id=s.id and s.id=#{userId};
+    </select>
+
+    <!--修改后台用户信息-->
+    <update id="updateManagerUserInfo">
+      update userinfo set sex=#{sex} , birthday=#{birthday} , eamil=#{eamil},introduce=#{introduce} where user_id=#{userId};
+    </update>
+
+    <!--修改前台用户信息-->
+    <update id="updateUserInfo">
+        update userinfo set sex=#{sex} , birthday=#{birthday} , eamil=#{eamil},introduce=#{introduce} where user_id=#{userId};
+    </update>
+</mapper>

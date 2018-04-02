@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+游记展示模块mapper配置文件
+-->
+<mapper namespace="com.SlowTravel.www.mapper.TravelsShowMapper">
+
+    <!--  建立映射关系 -->
+    <resultMap id="TravelsShow" type="com.SlowTravel.www.entity.TravelsShow">
+        <result property="id" column="tag" />
+        <association property="st_user" javaType="com.SlowTravel.www.entity.St_user">
+            <id property="id" column="uid"/>
+            <result property="username" column="username"/>
+            <result property="photo" column="photo"/>
+        </association>
+        <association property="travels" javaType="com.SlowTravel.www.entity.Travels">
+            <id property="id" column="tid"/>
+            <result property="t_name" column="t_name"/>
+            <result property="calendar" column="calendar"/>
+            <result property="local" column="local"/>
+        </association>
+        <collection property="pictures" ofType="com.SlowTravel.www.entity.Pictures">
+            <id property="id" column="pid"/>
+            <result property="url" column="url"/>
+            <result property="date" column="date"/>
+            <result property="exp" column="exp"/>
+            <result property="place" column="place"/>
+            <result property="likeCount" column="likeCount"/>
+            <result property="messageCount" column="messageCount"/>
+        </collection>
+    </resultMap>
+
+    <!--查询热门游记-->
+    <select id="selectTravelsShow" parameterType="int" resultMap="TravelsShow">
+        select p.*,count(pr.p_id) likeCount from (select u.id uid,u.username,u.photo,t.id tid,t.t_name,t.calendar,t.local,p.id pid,p.url,p.date,p.exp,p.place,SUM(case when m.state = 1 then 1 else 0 END) messageCount from st_user u LEFT JOIN travels t ON u.id = t.user_id LEFT JOIN picture p ON t.id = p.travels_id LEFT JOIN p_comment m ON p.id = m.p_id where t.id = #{tid} GROUP BY p.id) p LEFT JOIN praise pr ON pr.p_id = p.pid GROUP BY p.pid;
+    </select>
+
+</mapper>

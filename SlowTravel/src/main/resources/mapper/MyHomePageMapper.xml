@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+用户模块mapper配置文件
+-->
+<mapper namespace="com.SlowTravel.www.mapper.MyHomePageMapper">
+
+    <!--获取我的首页曾经的游记-->
+    <select id="selectMyTravelsByUserId" parameterType="int"
+            resultType="com.SlowTravel.www.entity.myHomePage.MyTravels">
+        select s.username,t.id,t.t_name,t.calendar,p.url from st_user s,travels t,picture p where s.id=t.user_id and t.id=p.travels_id and t.state=1 and s.id=#{userId} ORDER BY t.calendar DESC ;
+    </select>
+
+    <!--获取我的首页中的我喜欢的照片地址-->
+    <select id="selectMyPhotosAndCountByUserId" parameterType="int"
+            resultType="com.SlowTravel.www.entity.myHomePage.MyPhotosAndCount">
+       select count(*) count,a.* from (select  pi.url,pi.id pid  from picture  pi right JOIN praise pr on
+        pr.p_id=pi.id inner JOIN st_user s on pr.user_id=s.id and pi.state=1 and s.id=#{userId} GROUP BY pr.p_id ORDER BY pr.id DESC) a,praise pr1 where pr1.p_id = pid GROUP BY pid
+    </select>
+
+    <!--获取我的首页中的 想去的地方-->
+    <select id="selectWantToGoByUserId" parameterType="int" resultType="com.SlowTravel.www.entity.myHomePage.WantToGo">
+        select w.go_number,w.want_number,d.city_name,d.photo from want_to_go w,st_user s,user_want_to_go wt,destination d where w.dtt_id=d.id and s.id=wt.user_id and wt.want_to_go_id=w.id and s.id=#{userId}
+    </select>
+
+    <!--获取我的首页中的 收藏条数-->
+    <select id="selectCollectCountByUserId" parameterType="int" resultType="int">
+        SELECT COUNT(*) collectCount from colletc
+    </select>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+搜索游记模块mapper配置文件
+-->
+<mapper namespace="com.SlowTravel.www.mapper.SearchTravelMapper">
+
+    <!--  建立映射关系 -->
+    <resultMap id="searchTravels" type="com.SlowTravel.www.entity.SearchTravel">
+        <result property="id" column="tag" />
+        <association property="st_user" javaType="com.SlowTravel.www.entity.St_user">
+            <id property="id" column="uid"/>
+            <result property="username" column="username"/>
+        </association>
+        <association property="travels" javaType="com.SlowTravel.www.entity.Travels">
+            <id property="id" column="tid"/>
+            <result property="t_name" column="t_name"/>
+            <result property="calendar" column="calendar"/>
+            <result property="local" column="local"/>
+        </association>
+        <association property="picture" javaType="com.SlowTravel.www.entity.Picture">
+            <id property="id" column="pid"/>
+            <result property="url" column="url"/>
+            <result property="date" column="date"/>
+            <result property="exp" column="exp"/>
+        </association>
+    </resultMap>
+
+    <select id="selectTravels" resultMap="searchTravels">
+        select @rownum:=@rownum+1 tag,a.* from (select @rownum:=0,u.id uid,u.username,t.id tid,t.t_name,t.calendar,t.local,t.state,p.id pid,p.url,p.date,p.exp from st_user u RIGHT JOIN travels t ON u.id = t.user_id RIGHT JOIN picture p ON t.id = p.travels_id where u.username like CONCAT('%',#{0},'%') OR t.t_name like CONCAT('%',#{0},'%')) a where state = 1
+    </select>
+
+</mapper>

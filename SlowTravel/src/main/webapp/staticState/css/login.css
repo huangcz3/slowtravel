@@ -1,0 +1,46 @@
+.top{
+    width: 80px;
+    text-align: center;
+    border-right: 1px solid gainsboro;
+    display: inline-block;
+}
+
+#register{
+    border-right: none;
+}
+
+a{
+    color: #4abdcc;
+}
+
+a:hover{
+    text-decoration: none;
+    color: aqua;
+}
+
+.btn-primary{
+    width: 150px;
+    font-size: 18px;
+    background-color: #4abdcc;
+    border: none;
+}
+
+.btn-primary:hover{
+    background-color: aqua;
+}
+
+.modal-footer{
+    text-align: center;
+}
+
+#code{
+    width: 80px;
+    background-color: #4abdcc;
+    font-size: 18px;
+    color: #ffffff;
+    font-family: "Comic Sans MS";
+}
+
+span{
+    color: red;
+}

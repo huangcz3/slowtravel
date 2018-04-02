@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+图片消息模块mapper配置文件
+-->
+<mapper namespace="com.SlowTravel.www.mapper.P_commentMapper">
+
+    <!--根据图片id查找消息-->
+    <select id="selectMessageByPid" parameterType="int"  resultType="com.SlowTravel.www.entity.P_comment">
+        select m.*,u.photo from p_comment m,picture p,st_user u where p.id = m.p_id and m.username = u.username and p.id = #{pid} AND m.state = 1;
+    </select>
+
+    <insert id="insertMessage" parameterType="com.SlowTravel.www.entity.P_comment" keyProperty="id" useGeneratedKeys="true">
+        insert into p_comment values(null,#{p_id},#{content},#{username},#{receive_username},#{date},1,1);
+    </insert>
+
+    <update id="deleteMessage" parameterType="int">
+        update p_comment set state = 0 where id = #{pid};
+    </update>
+
+    <select id="selectMessageCount" parameterType="int" resultType="int">
+            select SUM(case when state = 1 then 1 else 0 end) from p_comment where p_id = #{pid}
+    </select>
+
+    <select id="selectDeleteComment" resultType="com.SlowTravel.www.entity.P_comment">
+        select * from p_comment where state = 0 limit #{0},10
+    </select>
+
+    <select id="selectDeleteCommentCount" resultType="int">
+        select count(*) from p_comment where state = 0
+    </select>
+
+    <update id="renewComment">
+        update p_comment set state = 1 where id = #{0}
+    </update>
+
+    <delete id="shiftDeleteComment">
+        delete from p_comment where id = #{0}
+    </delete>
+
+    <select id="searchDeleteComment" resultType="com.SlowTravel.www.entity.P_comment">
+        select * from (select * from p_comment where content like  CONCAT('%',#{0},'%') or username like CONCAT('%',#{0},'%') or receive_username like CONCAT('%',#{0},'%') or date like CONCAT('%',#{0},'%') )a where state = 0 limit #{1},10;
+    </select>
+
+    <select id="searchDeleteCommentCount" resultType="int">
+        select count(*) from (select * from p_comment where content like  CONCAT('%',#{0},'%') or username like CONCAT('%',#{0},'%') or receive_username like CONCAT('%',#{0},'%') or date like CONCAT('%',#{0},'%') )a where state = 0;
+    </select>
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+管理员模块mapper配置文件
+-->
+<mapper namespace="com.SlowTravel.www.mapper.TravelsPictureMapper">
+
+    <!--  建立映射关系 -->
+    <resultMap id="HotTravels" type="com.SlowTravel.www.entity.TravelPictureConnection">
+        <result property="id" column="tag" />
+        <association property="st_user" javaType="com.SlowTravel.www.entity.St_user">
+            <id property="id" column="uid"/>
+            <result property="username" column="username"/>
+            <result property="photo" column="photo"/>
+        </association>
+        <association property="travels" javaType="com.SlowTravel.www.entity.Travels">
+            <id property="id" column="tid"/>
+            <result property="t_name" column="t_name"/>
+            <result property="calendar" column="calendar"/>
+            <result property="local" column="local"/>
+            <result property="hot" column="hot"/>
+        </association>
+        <association property="picture" javaType="com.SlowTravel.www.entity.Picture">
+            <id property="id" column="pid"/>
+            <result property="url" column="url"/>
+            <result property="date" column="date"/>
+            <result property="exp" column="exp"/>
+        </association>
+    </resultMap>
+
+    <!-- 查询热门游记和照片以及用户id -->
+    <select id="selectHotTravels"  resultMap="HotTravels">
+        select  @rownum:=@rownum+1 tag, a.* from (select  @rownum:=0, u.id uid,u.username,u.photo,t.id tid,t.t_name,t.hot,t.calendar,t.local,p.id pid,p.url,p.date,p.exp from travels t,picture p,st_user u where u.id = t.user_id and p.travels_id = t.id AND t.state = 1 ORDER BY t.hot DESC LIMIT 6) a
+    </select>
+
+
+</mapper>

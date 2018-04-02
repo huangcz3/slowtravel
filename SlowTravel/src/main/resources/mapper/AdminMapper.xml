@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+管理员模块mapper配置文件
+-->
+<mapper namespace="com.SlowTravel.www.mapper.AdminMapper">
+
+    <!--根据管理员账号查询账号对应的存储在数据库的随机字符-->
+    <select id="selectAdminsRnumByName" parameterType="java.lang.String" resultType="java.lang.String">
+        select r_num from admins where aname=#{str}
+    </select>
+
+    <!--根据账号密码查询管理员对象-->
+    <select id="selectAdmins" parameterType="com.SlowTravel.www.entity.Admins" resultType="com.SlowTravel.www.entity.Admins">
+        select *  FROM admins where  aname=#{aname} and apwd=#{apwd}
+    </select>
+
+</mapper>

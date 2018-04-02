@@ -1,0 +1,18 @@
+.left_butt{
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.left_ul{
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.left_li{
+    margin-top: 2px;
+    background-color: gainsboro;
+}

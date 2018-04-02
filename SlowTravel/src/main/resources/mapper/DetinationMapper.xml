@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+目的地模块配置文件
+-->
+<mapper namespace="com.SlowTravel.www.mapper.DestinationMapper">
+
+    <!--前20目的地映射对象-->
+    <resultMap id="hotDestination" type="com.SlowTravel.www.entity.destinations.Destination">
+        <id property="id" column="id"/>
+        <result property="city_name" column="city_name"/>
+        <result property="photo" column="photo"/>
+        <result property="hot" column="hot"/>
+    </resultMap>
+
+
+    <!--目的地基本数据一对多映射对象-->
+    <resultMap id="destinationDetail" type="com.SlowTravel.www.entity.destinations.DestinationDetails">
+        <id property="id" column="did"/>
+        <result property="city_name" column="city"/>
+        <result property="photo" column="photo"/>
+        <result property="hot" column="hot"/>
+
+        <association property="wantToGo" javaType="com.SlowTravel.www.entity.destinations.WantToGo">
+            <id column="wid" property="id"/>
+            <result column="go_number" property="go_number"/>
+            <result column="want_number" property="want_number"/>
+        </association>
+
+        <collection property="picture" ofType="com.SlowTravel.www.entity.Picture" column="pid">
+            <id column="pid" property="id"/>
+            <result column="url" property="url"/>
+        </collection>
+
+    </resultMap>
+
+<!--通过目的地ID 图片类型查询照片-->
+    <resultMap id="destPhotoWantTogo" type="com.SlowTravel.www.entity.destinations.DestImgWantToGo">
+
+        <id property="id" column="id"/>
+        <result column="place" property="place"/>
+        <result column="url" property="url"/>
+        <result column="go_number" property="go_number"/>
+        <result column="want_number" property="want_number"/>
+    </resultMap>
+
+    <!-- 通过目的地id  图片类型ID 查询目的地城市景点 美食 等数据 映射-->
+    <resultMap id="destinationPhoto" type="com.SlowTravel.www.entity.destinations.DesinationImg">
+        <id property="id" column="id"/>
+        <result column="url" property="url"/>
+        <result column="place" property="place"/>
+        <result column="coun" property="praise"/>
+    </resultMap>
+
+
+    <!--查询热度前20的目的地-->
+    <select id="selectHotDest" resultMap="hotDestination">
+        SELECT * FROM  destination  order by hot DESC limit #{0}
+    </select>
+
+    <!-- 通过id查询目的地城市基本信息-->
+    <select id="selectDestById" resultMap="destinationDetail">
+select a.id did,a.city_name city,a.photo ,a.hot ,b.id wid ,b.go_number ,b.want_number ,c.id pid ,c.url
+ from destination a,want_to_go b,picture c
+  where a.id=b.dtt_id and c.local=a.city_name and a.id =#{id} limit 3
+    </select>
+
+    <!--查询目的地图片数量-->
+    <select id="selectDestImgNumber"  resultType="java.lang.Integer">
+       select count(1) from destination a,picture b where local =a.city_name
+    </select>
+
+
+    <!-- 通过目的地id  图片类型ID 查询目的地城市景点 美食 等数据-->
+    <select id="selectDestPhotoByType" resultMap="destinationPhoto">
+
+        select picture.*,count(praise.p_id)coun from
+        picture left join praise on picture.id=praise.p_id group by picture.id
+        having picture.local=(select city_name from destination where id=#{0})
+        and picture.category=(select id  from p_category where category_des=#{1})
+        order by coun limit #{2};
+    </select>
+
+    <select id="selectDestPhoto" resultMap="destinationPhoto">
+
+        select picture.*,count(praise.p_id)coun from
+        picture left join praise on picture.id=praise.p_id group by picture.id
+        having picture.local=(select city_name from destination where id=#{0})
+        order by coun limit #{1},20;
+    </select>
+
+    <!--通过目的地ID 图片类型 查询目的地图片-->
+
+    <select id="selectDestTypePhoto"   resultMap="destPhotoWantTogo">
+        select a.id ,a.place,a.url ,case when b.go_number is null then 0 else b.go_number end go_number,
+        case when b.want_number is null then 0 else b.want_number end want_number from
+        (select * from  picture where local=(select city_name from destination where id=#{0})
+        and category =(select id from p_category where category_des=#{1})) a left join picture_want_togo b on  a.id=b.pic_id
+        order by b.go_number and b.want_number limit #{2},6
+    </select>
+
+
+
+</mapper>

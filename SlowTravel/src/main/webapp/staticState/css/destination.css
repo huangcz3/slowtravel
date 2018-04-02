@@ -1,0 +1,141 @@
+
+.spacing{
+    margin-top:20px;
+    height: 100px;
+}
+
+.category{
+    width: 322px;
+    height: 100px;
+    float: left;
+    line-height: 100px;
+    margin-left: 13px;
+}
+.localoption1{
+
+    background-image: url('../img/localOption1.png');
+    background-repeat: no-repeat;
+}
+
+.localoption2{
+    background-image: url('../img/localOption2.PNG');
+    background-repeat: no-repeat;
+}
+.seize{
+    width:4%;
+height: 50px;
+    float: left;
+}
+
+.local{
+    width: 39%;
+    height: 60%;
+    margin-left: -3px;
+    margin-top: 20px;
+    line-height: 60%;
+}
+.optionfont{
+    color: white;
+opacity: 1;
+    margin-left: 10px;
+  position: relative;top: 10px;
+}
+.hotlocal{
+  width:100%;
+    height: 40px;
+    float: left;
+    background: #e0e2d3;
+line-height: 40px;
+}
+.localback1{
+    background-image: url("../img/localcon1.PNG");
+
+}
+.localback2{
+    background-image: url("../img/localcon2.PNG") ;
+}
+.icongly{
+font-size: 16px;
+color: white;
+}
+.hotLocalIcon{
+    width: 12%;
+    height: 100%;
+    background: #43bffa;
+float: left;
+    text-align: center;
+
+}
+.hotIcon{
+    color: white;
+    font-size: 25px;
+margin-top: 10%;
+}
+
+.hotLocalText{
+margin-left: 10px;
+}
+.hotLocalShow{
+    width: 157px;
+    height: 150px;
+float: left;
+    margin-right: 14px;
+    margin-top: 10px;
+}
+
+.hotLocals{
+    width: 103%;
+    float: left;
+    min-width: 490px;
+}
+
+.localImg{
+    width:100%;
+    height:100%;
+}
+.localInfo{
+    width: 80%;
+    height:30%;
+   background: #060606;
+position: relative;
+    top: -40%;
+    left: -10%;
+  opacity: 0.4;
+}
+.localInfo2{
+    color: white;
+    position: relative;
+    top: -75%;
+    left: 10%;
+}
+
+
+.hotLocalMenu{
+    width: 48%;
+    height: 20px;
+    float: left;
+    margin-left: 2%;
+    background: #ebebeb;
+    margin-top: 8px;
+
+}
+
+.hotLocalMenu:hover{
+    background: #d9d9d9;
+}
+.hotLocalMenuNum{
+    width: 25%;
+    height: 100%;
+    background: orangered;
+float: left;
+    color: white;
+    text-align: center;
+
+}
+.hotlocalMenuText{
+    color: #a5a5a5;
+    font-size: 13px;
+    margin-left: 5px;
+    position: relative;top: 2px;
+}
+

@@ -1,0 +1,265 @@
+.mainDiv {
+    width: 100%;
+    height: 66px;
+    position: fixed;
+    background: rgba(78, 190, 203, .8);
+    z-index: 999;
+    min-width: 2000px;
+}
+
+.mainDiv_top {
+    width: 100%;
+    height: 66px;
+    position: fixed;
+    background: none;
+    z-index: 999;
+    min-width: 2000px;
+}
+
+.hoverA {
+    cursor: pointer;
+    color: white;
+    font: inherit;
+}
+
+.hoverA:hover {
+    text-decoration: none;
+    transition: color .3s ease;
+}
+
+.hoverDiv {
+    cursor: pointer;
+    color: white;
+    font: inherit;
+}
+
+.hoverDiv:hover {
+    background: #2e9dab;
+    text-decoration: none;
+    color: white;
+}
+
+.leftDiv {
+    position: absolute;
+    left: 2%;
+}
+
+.leftDiv div {
+    float: left;
+    width: 100px;
+    height: 66px;
+    text-align: center;
+    line-height: 66px;
+    font-size: 20px;
+    color: white;
+    margin-left: 40px;
+    cursor: pointer;
+}
+
+.leftDiv img {
+    width: 95px;
+    height: 40px;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+.leftDiv a {
+    display: block;
+    width: 100px;
+    height: 66px;
+}
+
+.rightDiv {
+    position: absolute;
+    left: 45%;
+    top: 30%;
+}
+
+.rightW {
+    float: left;
+    width: 70px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 20px;
+    color: white;
+}
+
+.selectDiv {
+    background: rgba(255, 255, 255, .1);
+    padding: 0 0 0 20px;
+    height: 28px;
+    width: 165px;
+    border: 1px solid #fff;
+    border-radius: 28px;
+}
+
+.select {
+    display: block;
+    float: left;
+    width: 143px;
+    height: 28px;
+    line-height: 28px;
+    background: 0 0;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    cursor: auto;
+}
+
+::-webkit-input-placeholder {
+    color: white;
+}
+
+.rightA {
+    border-right: 1px solid white;
+}
+
+.rightWords {
+    position: absolute;
+    left: 110%;
+    top: 20%;
+    width: 200px;
+}
+
+.head {
+    position: absolute;
+    left: 120%;
+    top: -70%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/*nav导航盒子*/
+div.nav {
+    width: 134px;
+    height: 66px;
+    text-align: center;
+    font-size: 12px;
+    position: relative;
+    line-height: 66px;
+}
+
+div.nav:hover {
+    background: #bad424;
+}
+
+.box_ul{
+    height: 181px;
+}
+
+/*nav-main*/
+ul.nav-main {
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+}
+
+ul.nav-main span {
+    display: inline-block;
+    margin-left: 18px;
+    width: 7px;
+    height: 7px;
+    background: url('../img/down-icon.png') no-repeat;
+}
+
+/*导航条设置*/
+ul.nav-main > li {
+    width: 134px;
+    height: 100%;
+    display: block;
+    float: left;
+    color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/*隐藏盒子设置*/
+div.hidden-box {
+    width: 134px;
+    border-top: 0;
+    position: absolute;
+    display: none;
+    top: 66px;
+    background: #4fbecb
+}
+
+.hidden-box li {
+    height: 32px;
+    border-bottom: 1px solid #2e9dab;
+    line-height: 32px;
+    cursor: pointer;
+}
+
+.hidden-box li:hover {
+    background: #2e9dab;
+}
+
+.hidden-a {
+    font-size: 12px;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.hidden-a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.photo {
+    width: 32px;
+    height: 32px;
+    border-radius: 55px;
+}
+
+.top{
+    width: 80px;
+    text-align: center;
+    border-right: 1px solid gainsboro;
+    display: inline-block;
+}
+
+#register{
+    border-right: none;
+}
+
+.btn-primary{
+    width: 150px;
+    font-size: 18px;
+    background-color: #4abdcc;
+    border: none;
+}
+
+.btn-primary:hover{
+    background-color: aqua;
+}
+
+.modal-footer{
+    text-align: center;
+}
+
+#code{
+    width: 80px;
+    background-color: #4abdcc;
+    font-size: 18px;
+    color: #ffffff;
+    font-family: "Comic Sans MS";
+}
+.top a {
+    color: #4abdcc;
+}
+#sp5{
+    color: red;
+}
+.myInput{
+    width: 100%;
+    text-align: center;
+}

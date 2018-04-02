@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+图片模块mapper配置文件
+-->
+<mapper namespace="com.SlowTravel.www.mapper.PictureMapper">
+
+    <select id="selectDeletePicture" resultType="com.SlowTravel.www.entity.Picture">
+        select * from picture where state = 0 limit #{0},10
+    </select>
+
+    <select id="selectDeletePictureCount" resultType="int">
+        select count(*) from picture where state = 0
+    </select>
+
+    <update id="renewPicture">
+        update picture set state = 1 where id = #{0}
+    </update>
+
+    <delete id="shiftDeletePicture">
+        delete from picture where id = #{0}
+    </delete>
+
+    <select id="searchDeletePicture" resultType="com.SlowTravel.www.entity.Picture">
+        select * from (select * from picture where url like  CONCAT('%',#{0},'%') or date like CONCAT('%',#{0},'%') or exp like CONCAT('%',#{0},'%') or place like CONCAT('%',#{0},'%') )a where state = 0 limit #{1},10;
+    </select>
+
+    <select id="searchDeletePictureCount" resultType="int">
+        select count(*) from (select * from picture where url like  CONCAT('%',#{0},'%') or date like CONCAT('%',#{0},'%') or exp like CONCAT('%',#{0},'%') or place like CONCAT('%',#{0},'%') )a where state = 0;
+    </select>
+
+</mapper>

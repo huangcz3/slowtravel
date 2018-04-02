@@ -1,0 +1,194 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: #f5f5f5;
+}
+
+.check-a:visited {
+    color: rgba(255, 255, 255, 0.3);
+
+}
+
+.edit:visited {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.check-a:link {
+    color: rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+}
+
+.edit:visited {
+    color: rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+}
+
+.carousel {
+    height: 580px;
+}
+
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('/SlowTravel/staticState/js/bootstrap-3.1.1/fonts/glyphicons-halflings-regular.eot');
+    src: url('/SlowTravel/staticState/js/bootstrap-3.1.1/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/SlowTravel/staticState/js/bootstrap-3.1.1/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/SlowTravel/staticState/js/bootstrap-3.1.1/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/SlowTravel/staticState/js/bootstrap-3.1.1/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 1;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon:empty {
+    width: 1em;
+}
+
+.left_button {
+    position: absolute;
+    left: 2%;
+    top: 45%;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.right_button {
+    position: absolute;
+    left: 63%;
+    top: 45%;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.left_button:hover {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.right_button:hover {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.mid {
+    margin-top: 50px;
+    height: 857px;
+}
+.midHotScenics{
+    margin-top: 50px;
+}
+.mid_master{
+    margin-top: 50px;
+    height: auto;
+    min-height: 857px;
+}
+.mid-text {
+    font-size: 70px;
+    color: white;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    display: block;
+    text-align: center;
+    min-width: 600px;
+}
+
+.topDiv {
+    min-width: 2000px;
+}
+
+.editDiv {
+    position: absolute;
+    top: 55%;
+    left: 45%;
+    cursor: pointer;
+}
+
+.edit {
+    color: white;
+    display: block;
+    border: 1px solid white;
+    border-radius: 78px;
+    font-size: 25px;
+    width: 196px;
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+    min-width: 196px;
+}
+
+.edit:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.edit:link {
+    text-decoration: none;
+}
+
+.mid-select-without {
+    background: rgba(255, 255, 255, 0.1);
+    width: 355px;
+    height: 60px;
+    position: absolute;
+    left: 39%;
+    top: 70%;
+    text-align: center;
+    line-height: 60px;
+    border-radius: 50px;
+}
+
+.mid-select {
+    margin: 5px 0 0 5px;
+    border-radius: 50px;
+    border: 1px solid white;
+    width: 344px;
+    height: 50px;
+    text-align: center;
+    background: white;
+}
+
+.mid-select input {
+    background: 0 0;
+    width: 270px;
+    height: 50px;
+    border: 0;
+    color: #909090;
+    font-size: 14px;
+    cursor: auto;
+    padding: 0;
+    margin-left: 20px;
+    outline: 0;
+}
+
+.mid-select-input::-webkit-input-placeholder {
+    color: #909090;
+}
+
+.mid_bottom{
+    margin-top:100px;
+}
+.master_load{
+    font-size: 20px;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid #e7e7e7;
+    width: 230px;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 50px;
+}
+.master_load:hover{
+    border:1px solid #797979;
+}
+.master_load_a{
+    margin: 20px auto 0;
+    color: #b0b0b0;
+}
+.master_load_a:hover{
+    color: #b0b0b0;
+}

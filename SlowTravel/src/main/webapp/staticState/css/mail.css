@@ -1,0 +1,347 @@
+.center_align{
+    height: auto;
+    width: 100%;
+    margin: 0 auto;
+}
+.center_align_left{
+    height: auto;
+    width: 700px;
+    background: white;
+    float: left;
+    margin-bottom: 130px;
+}
+.center_align_left_register{
+    height: 250px;
+    width: 640px;
+}
+.center_align_left_info{
+    float: left;
+    height: 82px;
+
+}
+
+#allmap, #showmap {
+    width: 655px;
+    height: 358px;
+    overflow: hidden;
+    border: 1px solid red;
+    float: left;
+    margin: 0;
+}
+
+.center_align_img{
+    width: 78px;
+    height: 78px;
+    float: left;
+}
+.center_zuo{
+    height: auto;
+    width: 1000px;
+    margin: 0 auto;
+}
+.center_align_img_logo{
+    width: 78px;
+    height: 78px;
+    border-radius: 78px;
+}
+.center_align_date{
+    color: #999999;
+    font-size: 14px;
+    width: 356px;
+    height: 82px;
+    float: left;
+    padding: 0 0px 6px 15px;
+    margin-top: -15px;
+}
+.center_align_date_name{
+    font-size: 30px;
+    color: #5c5c5c;
+    margin-bottom: 10px;
+}
+.center_align_zan{
+    width: 185px;
+    height: 55px;
+    float: right;
+    border-radius: 4px;
+    margin-left: 65px;
+}
+a{
+    text-decoration: none;
+}
+.center_align_a{
+    color: #4abdcc;
+}
+.center_align_a:hover{
+    color: #2e9dab;
+    transition: 0.3s ease;
+}
+.center_span{
+    display: inline-block;
+    width: 18px;
+    height: 17px;
+    background-image: url(/SlowTravel/staticState/img/mail_logo.png);
+    background-repeat: no-repeat;
+    background-position: 0 -980px;
+    margin-top: 20px;
+}
+.center_b{
+    font-size: 12px;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: bold;
+    margin-top: -5px;
+}
+.center_span_a{
+    color: #999999;
+}
+.center_align_xiaoxi{
+    display: inline-block;
+    width: 18px;
+    height: 17px;
+    background-image: url(/SlowTravel/staticState/img/mail_logo.png);
+    background-repeat: no-repeat;
+    background-position: -60px -980px;
+    margin-top: 22px;
+}
+.center_xingxing{
+    float: left;
+}
+.center_xiaoxi{
+    float: left;
+}
+.center_zhuanfa{
+    float: left;
+}
+.center_align_zhuanfa{
+    display: inline-block;
+    width: 18px;
+    height: 17px;
+    background-image: url(/SlowTravel/staticState/img/mail_logo.png);
+    background-repeat: no-repeat;
+    background-position: -100px -980px;
+    margin-top: 22px;
+}
+.left_map{
+    float: left;
+    width: 700px;
+    height: 350px;
+    margin-top: 60px;
+}
+.left_map_date{
+    width: 700px;
+    float: left;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+    margin-top: 50px;
+
+}
+.left_map_taiyang{
+    color: #5c5c5c;
+    margin: 25px 0;
+    height: 22px;
+    line-height: 22px;
+    padding-left: 29px;
+    background: url(/SlowTravel/staticState/img/mail_logo.png) no-repeat -544px -948px;
+    font-weight: inherit;
+}
+.left_map_p{
+    padding: 15px 18px 0 18px;
+    line-height: 20px;
+    font-size: 14px;
+    border-right: 1px solid #e7e7e7;
+    border-left: 1px solid #e7e7e7;
+}
+.left_map_wapper{
+    height: 15px;
+    padding: 10px 20px 15px;
+    border-right: 1px solid #e7e7e7;
+    border-left: 1px solid #e7e7e7;
+}
+.left_map_right{
+    float: right;
+}
+.left_photo{
+    border-radius: 100%;
+    height: 28px;
+    width: 28px;
+}
+.left_map_a{
+    padding-left: 18px;
+    color: #999999;
+    font-size: 12px;
+    float: left;
+    width: auto;
+    height: auto;
+}
+
+.left_map_love{
+    background: url(/SlowTravel/staticState/img/mail_love.png) no-repeat -55px -1px;
+    padding-left: 18px;
+    color: #999999;
+    font-size: 12px;
+    cursor: pointer;
+}
+.left_map_love:link{
+    color: #999999;
+}
+.left_map_love:visited{
+    color: #999999;
+}
+.left_map_like{
+    background: url(/SlowTravel/staticState/img/mail_logo.png) no-repeat 0 -53px;
+    margin-left: 15px;
+    padding-left: 18px;
+    color: #999999;
+    font-size: 12px;
+}
+.left_map_left{
+    background: url(/SlowTravel/staticState/img/mail_logo.png) no-repeat 0 -17px;
+    color: #999999;
+    font-size: 12px;
+    line-height: 14px;
+    padding-left: 18px;
+}
+.left_waypoint{
+    margin-top: 60px;
+    float: left;
+    width: 657px;
+    height: 100%;
+}
+.tupian{
+    width: 657px;
+    height: 100%;
+    float: left;
+}
+.left_map_img{
+    width: 657px;
+    height: 100%;
+    float: left;
+}
+.left_one{
+    width: 658px;
+    float: left;
+    padding: 10px 20px 15px;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+}
+.left_map_text_fn{
+    float: right;
+    margin-top: 20px;
+}
+.left_map_ping{
+    background: url(/SlowTravel/staticState/img/mail_logo.png) no-repeat -200px -110px;
+    margin-left: 15px;
+    padding-left: 22px;
+    color: #999999;
+    font-size: 12px;
+}
+.left_map_float{
+    background: url(/SlowTravel/staticState/img/mail_logo.png) no-repeat 0 -17px;
+    color: #999999;
+    font-size: 12px;
+    line-height: 14px;
+    padding-left: 18px;
+    margin-top: 20px;
+    position: relative;
+    top: 16px;
+    width: 200px;
+}
+.message_left{
+    float: left;
+    font-size: 10px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+.message_input{
+    background-color: #eaeaea;
+    border: none;
+    font-size: 14px;
+    height: 28px;
+    line-height: 28px;
+    margin-right: 14px;
+    padding-left: 10px;
+    width: 525px;
+    cursor: auto;
+    outline: none;
+}
+.message_button{
+    background-color: #4abdcc;
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 70px;
+    color: #fff;
+    border: none;
+    outline: none;
+}
+
+.message_input::-webkit-input-placeholder {
+    color: #909090;
+}
+
+.message_right{
+    line-height: 46px;
+    margin-top: 10px;
+}
+.left_map_chazi{
+    background-image: url(/SlowTravel/staticState/img/mail_logo.png);
+    display: block;
+    margin: -1px 5px 0 15px;
+    width: 18px;
+    height: 17px;
+    background-position: 0 -998px;
+    width: 14px;
+    float: left;
+    margin-top: 20px;
+    margin-top: 0px;
+    margin-left: 153px;
+}
+.left_map_diqu{
+    line-height: 16px;
+    color: #4abdcc;
+    font-size: 12px;
+    white-space: nowrap;
+    margin-top: 2px;
+}
+.left_pinglun{
+    display: none;
+    float: left;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+    width: 658px;
+    font-size: 14px;
+    padding: 10px 20px 15px;
+}
+.left_map_ditu{
+    width: 700px;
+    height: 100%;
+    float: left;
+}
+.center_align_zhuche{
+    width: 700px;
+    height: 100%;
+    float: left;
+}
+.aaaaa{
+    border-radius: 5px;
+}
+
+.center_you{
+    width: 300px;
+    height: 347px!important;
+    float: left;
+    padding-top: 40px;
+}
+.center_guanggao{
+    width: 300px;
+    float: left;
+}
+.center_align_guanggao{
+    width: 300px;
+    float: left;
+    margin-left: initial;
+}
+.message{
+    margin-top: 20px;;
+}

@@ -1,0 +1,73 @@
+#name{
+    border: 2px double darkgray;
+    height: 40px;
+}
+#p{
+    font-size: x-large;
+}
+
+#id{
+    font-weight:bold ;
+    font-size: x-large;
+}
+#textareas{
+    text-indent: 30px;
+}
+#s_span{
+    text-align:center
+}
+
+#search_submit{
+    width: 200px;
+    float: right;
+    margin-top: 100px;
+    margin-bottom: 35px;
+}
+
+#citySelect{
+    height: 30px;
+    width: 340px;
+}
+
+#CreateTravel_photo_id{
+    float: right;
+    margin-top: -100px;
+}
+select#selectTravelCity
+{
+    width                    : 150px;
+    height                   : 40px;
+    padding                  : 0.2em 0.4em 0.2em 0.4em;
+    border                   : 1px solid #e9e9e9;
+    -moz-border-radius       : 0.2em;
+    -webkit-border-radius    : 0.2em;
+    border-radius            : 0.2em;
+    box-shadow               : inset 0 0 3px #a0a0a0;
+    -webkit-appearance       : none;
+    -moz-appearance          : none;
+    font-size                : 1.1em;
+    color                    : #000099;
+    cursor                   : pointer;
+}
+select#selectTravelCity  option
+{
+    font-size: 1em;
+    padding : 0.2em 0.4em 0.2em 0.4em;
+}
+select#selectTravelCity  option[selected]{
+    font-weight:bold
+}
+
+select#selectTravelCity  option:nth-child(even) {
+    background-color:#f5f5f5;
+}
+select#selectTravelCity:hover
+{
+    color                   : #101010;
+    border                  : 1px solid #cdcdcd;
+}
+select#selectTravelCity:focus {
+    box-shadow: 0 0 2px 1px #404040;
+}
+
+

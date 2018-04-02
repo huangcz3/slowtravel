@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+管理员模块mapper配置文件
+-->
+<mapper namespace="com.SlowTravel.www.mapper.TravelsMapper">
+
+    <!--查询热门游记-->
+    <select id="selectHotTravels" resultType="com.SlowTravel.www.entity.Travels">
+        select * from travels WHERE state=1 ORDER BY hot DESC LIMIT 6
+    </select>
+
+    <!--显示游记列表-->
+    <select id="selectTravelsList" resultType="com.SlowTravel.www.entity.manager.TravelsList">
+      select t.id,t.t_name,t.hot,t.calendar,t.`local`,s.username,s.role_id from travels t,st_user s where t.user_id=s.id and t.state=1
+      ORDER BY t.id desc LIMIT #{pageNumberIndex},10
+    </select>
+
+    <!--逻辑删除游记-->
+    <update id="logicDeleteTravelsById" parameterType="int">
+        update travels set state=0 where id=#{travelsId}
+    </update>
+
+    <!--修改游记-->
+    <update id="updateTravelsById" parameterType="com.SlowTravel.www.entity.Travels">
+        update travels set t_name=#{t_name} , hot=#{hot} ,`local`=#{local} where id=#{id}
+    </update>
+
+    <!--查询游记总数-->
+    <select id="selectTravelsCount" resultType="int">
+        select count(*) travelsCount from travels where state=1
+    </select>
+
+    <!--搜索游记信息-->
+    <select id="searchTravelsInfo" resultType="com.SlowTravel.www.entity.manager.TravelsList">
+        select t.id,t.t_name,t.hot,t.calendar,t.`local`,s.username,s.role_id from travels t,st_user s where t.user_id=s.id and t.state=1
+        <if test="t_name!=null">
+            and t.t_name like CONCAT('%',#{t_name},'%')
+        </if>
+        <if test="local!=null">
+            and t.local like CONCAT('%',#{local},'%')
+        </if>
+        <if test="username!=null">
+            and s.username like CONCAT('%',#{username},'%')
+        </if>
+            LIMIT #{pageNumberIndex},10
+    </select>
+
+    <!--搜索游记信息总数-->
+    <select id="searchTravelsInfoCount" parameterType="com.SlowTravel.www.entity.manager.TravelsList" resultType="int">
+        select count(*) TravelsInfoCount from travels t,st_user s where t.user_id=s.id and t.state=1
+        <if test="t_name!=null">
+            and t.t_name like CONCAT('%',#{t_name},'%')
+        </if>
+        <if test="local!=null">
+            and t.local like CONCAT('%',#{local},'%')
+        </if>
+        <if test="username!=null">
+            and s.username like CONCAT('%',#{username},'%')
+        </if>
+    </select>
+
+    <select id="selectDeleteTravel" resultType="com.SlowTravel.www.entity.Travels">
+        select * from travels where state = 0 limit #{0},10
+    </select>
+
+    <select id="selectDeleteTravelCount" resultType="int">
+        select count(*) from travels where state = 0
+    </select>
+
+    <update id="renewTravel">
+         update travels set state = 1 where id = #{0}
+    </update>
+
+    <delete id="shiftDeleteTravel">
+        delete from travels where id = #{0}
+    </delete>
+
+    <select id="searchDeleteTravel" resultType="com.SlowTravel.www.entity.Travels">
+        select * from (select * from travels where t_name like  CONCAT('%',#{0},'%') or hot like CONCAT('%',#{0},'%') or calendar like CONCAT('%',#{0},'%') or local like CONCAT('%',#{0},'%') )a where state = 0 limit #{1},10;
+    </select>
+
+    <select id="searchDeleteTravelCount" resultType="int">
+        select count(*) from (select * from travels where t_name like  CONCAT('%',#{0},'%') or hot like CONCAT('%',#{0},'%') or calendar like CONCAT('%',#{0},'%') or local like CONCAT('%',#{0},'%') )a where state = 0;
+    </select>
+
+    <update id="updateTravelHot">
+        update travels set hot = hot+1 where id = #{0}
+    </update>
+</mapper>

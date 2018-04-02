@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+管理员模块mapper配置文件
+-->
+<mapper namespace="com.SlowTravel.www.mapper.RoleMapper">
+
+    <!--根据id查找管理员名字-->
+    <select id="selectRole" parameterType="int" resultType="com.SlowTravel.www.entity.Role">
+        select *  FROM role where  id=#{id}
+    </select>
+
+</mapper>

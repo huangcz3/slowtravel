@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+用户模块mapper配置文件
+-->
+<mapper namespace="com.SlowTravel.www.mapper.TravelsMapper">
+
+
+    <!--根据添加游记-->
+    <insert id="insertTravels" parameterType="com.SlowTravel.www.entity.Travels" keyProperty="id" useGeneratedKeys="true">
+        INSERT  into  travels(t_name,hot,calendar,state,user_id,local) VALUES
+        (#{t_name},#{hot},#{calendar},#{state},#{user_id},#{local})
+    </insert>
+
+    <!-- 添加照片-->
+    <insert id="insertPictrue" parameterType="com.SlowTravel.www.entity.Picture" keyProperty="id" useGeneratedKeys="true">
+        INSERT  INTO picture VALUES(NULL ,#{url},#{date},#{exp},#{place},#{travels_id},#{state},#{local},#{category})
+    </insert>
+
+    <!-- 根据长传时间查询游记Id-->
+    <select id="insertTravelsId" parameterType="java.lang.String" resultType="int">
+       select travels.id  from travels where calendar=#{time};
+    </select>
+
+</mapper>

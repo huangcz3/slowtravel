@@ -1,0 +1,57 @@
+#userInfo_div select{
+    /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+    border: solid 1px #000;
+    /*很关键：将默认的select选择框样式清除*/
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    width: 50px;
+
+
+}
+
+#userInfo_div2 select{
+    width: 70px;;
+}
+
+#userInfo_div span{
+    font-size: 16px;
+}
+
+#userInfo_select1{
+    padding:0 2px 2px 15px;
+}
+#userInfo_year{
+    padding:0 2px 2px 15px;
+}
+#userInfo_montrh{
+    padding:0 2px 2px 30px;
+}
+
+#userInfo_day{
+    padding:0 2px 2px 30px;
+}
+
+#userInfo_ipt{
+    width: 350px;
+}
+
+#userInfo_text{
+    width: 540px;;
+}
+
+#userInfo_brithday{
+    visibility: hidden;
+}
+
+.class_a{
+    color: aqua;
+    font-size: 20px;
+    float: right;
+    margin-left: 50px;
+}
+
+#userInfo_lastDiv{
+    margin-bottom: 35px;
+
+}

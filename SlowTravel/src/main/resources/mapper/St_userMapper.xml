@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+用户模块mapper配置文件
+-->
+<mapper namespace="com.SlowTravel.www.mapper.St_userMapper">
+
+    <!--  建立映射关系 -->
+    <resultMap id="HotSt_user" type="com.SlowTravel.www.entity.St_user">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="photo" column="photo"/>
+        <result property="role_id" column="role_id"/>
+        <result property="hot" column="hot"/>
+    </resultMap>
+
+    <!--根据账号密码查询用户对象-->
+    <select id="selectSt_user" parameterType="com.SlowTravel.www.entity.St_user"
+            resultType="com.SlowTravel.www.entity.St_user">
+        select *  FROM st_user where  username=#{username} and password=#{password}
+    </select>
+
+    <!--根据用户名查询用户对象-->
+    <select id="selectSt_userByUsername" parameterType="java.lang.String"
+            resultType="com.SlowTravel.www.entity.St_user">
+        select *  FROM st_user where  username=#{username}
+    </select>
+
+    <!--根据用户账号查询账号对应的存储在数据库的随机字符-->
+    <select id="selectSt_userRandom_codeByUsername" parameterType="java.lang.String" resultType="java.lang.String">
+        select random_code from st_user where username=#{username}
+    </select>
+
+    <!--用户注册信息存储到数据库-->
+    <insert id="addSt_user" parameterType="com.SlowTravel.www.entity.St_user"
+            keyProperty="id" useGeneratedKeys="true">
+        insert into st_user(username,password,random_code,role_id,photo)
+        values(#{username},#{password},#{random_code},#{role_id},'/staticState/img/photo.jpg')
+    </insert>
+
+    <!-- 查询热门用户 -->
+    <select id="selectHotSt_user" parameterType="int" resultMap="HotSt_user">
+        select * from st_user ORDER BY hot desc LIMIT #{limit}
+    </select>
+
+    <!-- 根据id查询用户 -->
+    <select id="selectSt_userById" parameterType="int" resultMap="HotSt_user">
+        select * from st_user where id = #{id}
+    </select>
+
+    <!-- 查询所有用户 -->
+    <select id="selectSt_userAll"  resultMap="HotSt_user">
+        select * from st_user limit #{pageNumberIndex},10
+    </select>
+
+    <!-- 查询用户总数 -->
+    <select id="selectUserCount" resultType="int">
+        select count(*) from st_user
+    </select>
+
+    <!-- 通过用户id修改用户 -->
+    <update id="updateUserById">
+        update st_user set role_id = #{1},hot = #{2} where id = #{0}
+    </update>
+
+    <select id="selectUserByUsername" resultMap="HotSt_user">
+        select * from st_user where username like CONCAT('%',#{0},'%') limit #{1},10
+    </select>
+
+    <!-- 查询用户总数 -->
+    <select id="selectUserByUsernameCount" resultType="int">
+        select count(*) from st_user where username like CONCAT('%',#{0},'%')
+    </select>
+
+    <delete id="deleteUserById">
+        delete from st_user where id = #{0}
+    </delete>
+
+    <!--修改用户密码-->
+    <update id="updateSt_userPassword" parameterType="com.SlowTravel.www.entity.St_user">
+        UPDATE st_user SET password=#{password} where username=#{username} and random_code=#{random_code}
+    </update>
+
+</mapper>

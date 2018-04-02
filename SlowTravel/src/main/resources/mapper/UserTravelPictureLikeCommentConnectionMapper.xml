@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+管理员模块mapper配置文件
+-->
+<mapper namespace="com.SlowTravel.www.mapper.UserTravelPictureLikeCommentConnectionMapper">
+
+
+    <!--  建立映射关系 -->
+    <resultMap id="HotMaster" type="com.SlowTravel.www.entity.UserTravelPictureLikeCommentConnection">
+        <result property="id" column="tag" />
+        <result property="message" column="messageCount"/>
+        <result property="like" column="likeCount"/>
+        <association property="st_user" javaType="com.SlowTravel.www.entity.St_user">
+            <id property="id" column="uid"/>
+            <result property="username" column="username"/>
+            <result property="photo" column="photo"/>
+        </association>
+        <association property="travels" javaType="com.SlowTravel.www.entity.Travels">
+            <id property="id" column="tid"/>
+            <result property="t_name" column="t_name"/>
+            <result property="calendar" column="calendar"/>
+            <result property="local" column="local"/>
+        </association>
+        <association property="picture" javaType="com.SlowTravel.www.entity.Picture">
+            <id property="id" column="pid"/>
+            <result property="url" column="url"/>
+            <result property="date" column="date"/>
+            <result property="exp" column="exp"/>
+        </association>
+    </resultMap>
+
+
+    <!-- 查询热门达人 -->
+    <select id="selectHotMaster" parameterType="int" resultMap="HotMaster">
+      select a.*,count(pr.id) likeCount from praise pr RIGHT JOIN (select @rownum:=@rownum+1 tag,p.* from (select @rownum:=0,sum(case when m.state = 1 then 1 else 0 end) messageCount,u.id uid,t.id tid,p.id pid,m.id mid,u.username,u.photo,t.t_name,t.calendar,t.local,p.url,p.date,p.exp from travels t LEFT JOIN st_user u ON t.user_id = u.id LEFT JOIN picture p ON p.travels_id = t.id LEFT JOIN p_comment m ON m.p_id = p.id where t.state = 1 GROUP BY t.id ORDER BY u.hot desc LIMIT #{limit},10) p) a ON  pr.p_id = a.pid GROUP BY a.tid
+</select>
+</mapper>
